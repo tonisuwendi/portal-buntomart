@@ -10,13 +10,13 @@ export default function Button({
 }) {
   switch (variant) {
     case "primary":
-      variantClasses = `bg-teal-500 text-white hover:bg-teal-700`;
+      variantClasses = "bg-teal-500 text-white hover:bg-teal-700";
       break;
     case "light":
       variantClasses = "bg-white text-black hover:bg-slate-300";
       break;
     case "outline-primary":
-      variantClasses = `bg-white box-border border border-teal-700 border-2 text-teal-700 hover:bg-slate-200`;
+      variantClasses = "bg-white box-border border border-teal-700 border-2 text-teal-700 hover:bg-slate-200";
       break;
   }
   switch (size) {
