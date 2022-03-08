@@ -5,20 +5,20 @@ import Button from "../Button";
 import Menu from "./Menu";
 
 export default function Header() {
-  const [bgColor, setBgColor] = useState("");
+  const [headerClasses, setHeaderClasses] = useState("");
   useEffect(() => {
     window.onscroll = () => {
       const scroll = window.scrollY;
       if (scroll > 60) {
-        setBgColor("bg-white");
+        setHeaderClasses("bg-white shadow-sm");
       } else {
-        setBgColor("");
+        setHeaderClasses("");
       }
     };
   }, []);
   return (
     <nav
-      className={`py-4 h-20 flex items-center fixed z-10 w-full transition ${bgColor}`}
+      className={`py-4 h-20 flex items-center fixed z-10 w-full transition ${headerClasses}`}
     >
       <div className="flex items-center justify-between mx-auto w-1100">
         <div className="flex items-center">
