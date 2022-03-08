@@ -5,12 +5,11 @@ import TechnologyList from "./TechnologyList";
 
 export default function Banner() {
   return (
-    <div className="pt-20 pb-10 relative">
-      <DottedBg top={10} />
+    <div className="pt-40 pb-20 relative bg-gradient-to-l top from-teal-50">
+      <DottedBg top={90} />
       <BannerInfo />
       <TechnologyList />
       <ButtonAction />
-      <DottedBg bottom={0} right={0} />
     </div>
   );
 }

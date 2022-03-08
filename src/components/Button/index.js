@@ -10,13 +10,15 @@ export default function Button({
 }) {
   switch (variant) {
     case "primary":
-      variantClasses = "bg-teal-500 text-white hover:bg-teal-700";
+      variantClasses =
+        "buntomart-bg-color-primary text-white buntomart-bg-color-primary-hover";
       break;
     case "light":
       variantClasses = "bg-white text-black hover:bg-slate-300";
       break;
     case "outline-primary":
-      variantClasses = "bg-white box-border border border-teal-700 border-2 text-teal-700 hover:bg-slate-200";
+      variantClasses =
+        "bg-white box-border border buntomart-border-color-primary border-2 buntomart-text-color-primary hover:bg-slate-200";
       break;
   }
   switch (size) {
@@ -29,7 +31,7 @@ export default function Button({
   }
   return (
     <button
-      className={`transition flex gap-x-2 items-center duration-300 rounded ${variantClasses} ${sizeClasses} ${className}`}
+      className={`transition flex gap-x-2 items-center duration-300 buntomart-rounded ${variantClasses} ${sizeClasses} ${className}`}
       type={type}
     >
       {icon}
