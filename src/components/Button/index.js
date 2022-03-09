@@ -13,6 +13,10 @@ export default function Button({
       variantClasses =
         "buntomart-bg-color-primary text-white buntomart-bg-color-primary-hover";
       break;
+    case "secondary":
+      variantClasses =
+        "buntomart-bg-color-secondary text-white buntomart-bg-color-secondary-hover";
+      break;
     case "light":
       variantClasses = "bg-white text-black hover:bg-slate-300";
       break;

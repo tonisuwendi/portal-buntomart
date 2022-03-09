@@ -42,6 +42,10 @@ a {
     @apply bg-teal-500;
   }
 
+  .buntomart-bg-color-secondary {
+    @apply bg-indigo-500;
+  }
+
   .buntomart-text-color-primary {
     @apply text-teal-500;
   }
@@ -52,6 +56,10 @@ a {
 
   .buntomart-bg-color-primary-hover {
     @apply hover:bg-teal-700;
+  }
+
+  .buntomart-bg-color-secondary-hover {
+    @apply hover:bg-indigo-700;
   }
 }
 

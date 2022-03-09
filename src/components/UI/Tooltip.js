@@ -10,7 +10,7 @@ export default function Tooltip({ children, text }) {
 
   const handleMouseLeave = () => {
     tipRef.current.style.opacity = 0;
-    tipRef.current.style.marginBottom = "110px";
+    tipRef.current.style.marginBottom = "90px";
   };
 
   return (
@@ -20,10 +20,10 @@ export default function Tooltip({ children, text }) {
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="absolute whitespace-no-wrap bg-black text-white px-4 py-2 rounded flex items-center transition-all duration-150"
+        className="absolute whitespace-no-wrap bg-black text-white px-3 py-2 rounded flex items-center transition-all duration-150"
         style={{
           left: "50%",
-          marginBottom: 110,
+          marginBottom: 90,
           transform: "translate(-50%,0)",
           opacity: 0,
         }}
@@ -37,7 +37,7 @@ export default function Tooltip({ children, text }) {
             transform: "translate(-50%,0) rotate(45deg)",
           }}
         />
-        {text}
+        <span className="text-sm">{text}</span>
       </div>
       {children}
     </div>
