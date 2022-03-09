@@ -1,6 +1,6 @@
 import { IoWallet } from "react-icons/io5";
 import { IoPlay } from "react-icons/io5";
-import Button from "../Button";
+import Button from "../UI/Button";
 
 export default function ButtonAction() {
   return (

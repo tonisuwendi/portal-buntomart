@@ -1,11 +1,20 @@
 import { IoWallet, IoPlay } from "react-icons/io5";
-import Button from "../Button";
+import Button from "../UI/Button";
 
-export default function ButtonAction() {
+export default function ButtonAction({ data }) {
   return (
     <div className="flex gap-x-3 mt-10">
-      <Button title="Live Demo" variant="outline-primary" icon={<IoPlay />} />
-      <Button title="Beli Sekarang" icon={<IoWallet />} />
+      <Button
+        disabled={!data.isReady}
+        title="Live Demo"
+        variant="outline-primary"
+        icon={<IoPlay />}
+      />
+      <Button
+        disabled={!data.isReady}
+        title="Beli Sekarang"
+        icon={<IoWallet />}
+      />
     </div>
   );
 }

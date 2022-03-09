@@ -6,6 +6,7 @@ export default function Button({
   variant = "primary",
   size = "md",
   className = "",
+  disabled = false,
   icon,
 }) {
   switch (variant) {
@@ -35,7 +36,8 @@ export default function Button({
   }
   return (
     <button
-      className={`transition flex gap-x-2 items-center duration-300 buntomart-rounded ${variantClasses} ${sizeClasses} ${className}`}
+      disabled={disabled}
+      className={`transition disabled:opacity-50 disabled:cursor-not-allowed flex gap-x-2 items-center duration-300 buntomart-rounded ${variantClasses} ${sizeClasses} ${className}`}
       type={type}
     >
       {icon}

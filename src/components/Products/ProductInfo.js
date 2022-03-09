@@ -31,7 +31,7 @@ export default function ProductInfo({ data, imageLeft }) {
       <p className="text-lg text-slate-500 mt-4">{data.description}</p>
       <p className="text-lg text-slate-600 mt-4 mb-7">{data.features}</p>
       <TechnologyList technologies={data.technologies} align="left" />
-      <ButtonAction />
+      <ButtonAction data={data} />
     </div>
   );
 }

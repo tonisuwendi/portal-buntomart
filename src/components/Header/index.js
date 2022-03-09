@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoWallet } from "react-icons/io5";
-import Button from "../Button";
+import Button from "../UI/Button";
 import Menu from "./Menu";
 
 export default function Header() {
