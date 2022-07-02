@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { FiSend } from "react-icons/fi";
-import Modal from "./Modal";
-
-export default function AlertTestimoni() {
-  const [showModal, setShowModal] = useState(false);
-
+export default function AlertInfo({ onShowModal }) {
+  const showModalHandler = () => {
+    onShowModal();
+  };
   return (
     <>
       <div
@@ -39,26 +36,12 @@ export default function AlertTestimoni() {
             type="button"
             className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 font-medium buntomart-rounded px-4 py-2 mr-2 text-center inline-flex items-center dark:bg-teal-800 dark:hover:bg-teal-900"
             data-modal-toggle="createTestimonial"
-            onClick={() => setShowModal(true)}
+            onClick={showModalHandler}
           >
             Berikan Testimoni
           </button>
         </div>
       </div>
-      <Modal
-        title="Kirim Testimoni"
-        show={showModal}
-        onClose={() => setShowModal(false)}
-        onShow={setShowModal}
-        confirmTextButton="Kirim"
-        confirmIconButton={<FiSend />}
-      >
-        <p className="text-slate-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
-          placeat odit deserunt ad animi voluptas modi iste ea. Ab a natus quis
-          quo adipisci rerum numquam voluptate reiciendis ipsum sapiente.
-        </p>
-      </Modal>
     </>
   );
 }
