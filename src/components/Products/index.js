@@ -1,19 +1,21 @@
-import HorizontalLine from "../UI/HorizontalLine";
-import ProductItem from "./ProductItem";
-import { productBuntoapp, productBuntoshop } from "../../data/dummy/products";
+import HorizontalLine from '../UI/HorizontalLine';
+import ProductItem from './ProductItem';
+import { productBuntoapp, productBuntoshop } from '../../data/dummy/products';
 
 export default function Products() {
-  return (
-    <section className="w-1100 mx-auto mt-32">
-      <h2 className="text-4xl text-center font-bold text-slate-800">
-        Produk Kami
-      </h2>
-      <p className="text-lg mt-1 text-center text-slate-500">
-        Kamu bisa memilih salah satu atau semuanya sesuai keinginan.<br />Tiap produk memiliki keunggulan masing-masing.
-      </p>
-      <HorizontalLine center />
-      <ProductItem data={productBuntoapp} />
-      <ProductItem data={productBuntoshop} imageLeft />
-    </section>
-  );
+    return (
+        <section className="w-1100 mx-auto mt-32">
+            <h2 className="text-4xl text-center font-bold text-slate-800">
+                Produk Kami
+            </h2>
+            <p className="text-lg mt-1 text-center text-slate-500">
+                Kamu bisa memilih salah satu atau semuanya sesuai keinginan.
+                <br />
+                Tiap produk memiliki keunggulan masing-masing.
+            </p>
+            <HorizontalLine center />
+            <ProductItem data={productBuntoapp} />
+            <ProductItem data={productBuntoshop} imageLeft />
+        </section>
+    );
 }

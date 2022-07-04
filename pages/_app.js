@@ -1,17 +1,28 @@
-import { Fragment } from 'react'
+import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../styles/globals.css'
+
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <Fragment>
-      <Component {...pageProps} />
-      <ToastContainer
-        closeOnClick={false}
-      />
-    </Fragment>
-  );
+    return (
+        <>
+            <Component {...pageProps} />
+            <ToastContainer
+                closeOnClick={false}
+            />
+        </>
+    );
 }
 
-export default MyApp
+MyApp.propTypes = {
+    Component: PropTypes.elementType,
+    pageProps: PropTypes.shape({}),
+};
+
+MyApp.defaultProps = {
+    Component: null,
+    pageProps: {},
+};
+
+export default MyApp;

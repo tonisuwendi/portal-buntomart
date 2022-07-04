@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import Post from './post';
 
 const PRODUCTION = process.env.NODE_ENV === 'production';

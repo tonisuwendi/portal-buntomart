@@ -1,4 +1,5 @@
-import { fetchPOST } from "../config";
+/* eslint-disable import/prefer-default-export */
+import { fetchPOST } from '../config';
 
 const endpoints = {
     insertTestimonial: 'testimonial',
