@@ -14,18 +14,42 @@ export default function Testimonial() {
     const [enteredName, setEnteredName] = useState('');
     const [enteredJob, setEnteredJob] = useState('');
     const [enteredTestimonial, setEnteredTestimonial] = useState('');
+    const [errorMessage, setErrorMessage] = useState({
+        name: '',
+        job: '',
+        message: '',
+    });
+
+    const resetFormHandler = () => {
+        setEnteredName('');
+        setEnteredJob('');
+        setEnteredTestimonial('');
+    };
 
     const sendTestimonialHandler = async () => {
         setIsLoading(true);
         const payload = {
             name: enteredName,
             job: enteredJob,
+            message: enteredTestimonial,
         };
         try {
             const res = await insertTestimonial(payload);
-            if (!res.success) throw new Error(res.msg);
+            if (!res.success) throw new Error(JSON.stringify(res));
+            resetFormHandler();
+            setShowModal(false);
+            toast.success(res.message);
         } catch (error) {
-            toast.error(error.message);
+            const {
+                error_name: errorName,
+                error_job: errorJob,
+                error_message: errorTesti,
+            } = JSON.parse(error.message);
+            setErrorMessage({
+                name: errorName,
+                job: errorJob,
+                message: errorTesti,
+            });
         } finally {
             setIsLoading(false);
         }
@@ -34,16 +58,19 @@ export default function Testimonial() {
     const changeNameHandler = (event) => {
         const { value } = event.target;
         setEnteredName(value);
+        setErrorMessage((prevState) => ({ ...prevState, name: '' }));
     };
 
     const changeJobHandler = (event) => {
         const { value } = event.target;
         setEnteredJob(value);
+        setErrorMessage((prevState) => ({ ...prevState, job: '' }));
     };
 
     const changeTestimonialHandler = (event) => {
         const { value } = event.target;
         setEnteredTestimonial(value);
+        setErrorMessage((prevState) => ({ ...prevState, message: '' }));
     };
 
     return (
@@ -64,6 +91,7 @@ export default function Testimonial() {
                     label="Nama Lengkap"
                     textHelper="Maksimal 50 karakter"
                     value={enteredName}
+                    inputError={errorMessage.name}
                     onChange={changeNameHandler}
                     required
                 />
@@ -71,6 +99,7 @@ export default function Testimonial() {
                     id="job"
                     label="Pekerjaan"
                     value={enteredJob}
+                    inputError={errorMessage.job}
                     onChange={changeJobHandler}
                     required
                 />
@@ -78,6 +107,7 @@ export default function Testimonial() {
                     id="content"
                     label="Testimoni"
                     value={enteredTestimonial}
+                    inputError={errorMessage.message}
                     onChange={changeTestimonialHandler}
                     required
                 />

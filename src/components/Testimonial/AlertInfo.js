@@ -27,10 +27,10 @@ export default function AlertInfo({ onShowModal }) {
                 </h3>
             </div>
             <div className="mt-2 mb-4 text-teal-700 dark:text-teal-800">
-                Saat ini belum ada testimoni yang dapat ditampilkan. Yuk berikan
-                testimoni kamu terkait dengan produk Buntomart yang sudah kamu beli
-                dan dapatkan free update selama 6 bulan. Testimoni yang terpilih akan
-                muncul di sini.
+                Saat ini belum ada testimoni yang dapat ditampilkan.
+                Yuk berikan testimoni kamu terkait dengan produk Buntomart yang sudah kamu beli
+                dan dapatkan free update selama 6 bulan untuk testimoni terpilih.
+                Testimoni yang terpilih akan muncul di sini.
             </div>
             <div className="flex">
                 <button

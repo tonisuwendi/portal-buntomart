@@ -5,8 +5,12 @@ const headers = {
 };
 
 const Post = async (url = '', data = null) => {
-    const res = await axios.post(url, data, headers);
-    return res.data;
+    try {
+        const res = await axios.post(url, data, headers);
+        return res.data;
+    } catch (error) {
+        return error.response.data;
+    }
 };
 
 export default Post;
