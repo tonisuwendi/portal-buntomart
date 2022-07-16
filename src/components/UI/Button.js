@@ -2,12 +2,14 @@
 import PropTypes from 'prop-types';
 import { LightSpinner, DarkSpinner } from '../Icons/Spinner';
 
-let variantClasses;
-let sizeClasses;
-let isDark = true;
 export default function Button({
-    title, type, variant, size, className, disabled, onClick, icon, loading, loadingText,
+    title, type, variant, size, full, className, disabled, onClick, icon, loading, loadingText,
 }) {
+    let variantClasses;
+    let sizeClasses;
+    let customClass = '';
+    let isDark = true;
+
     switch (variant) {
     case 'primary':
         isDark = true;
@@ -37,11 +39,18 @@ export default function Button({
     case 'md':
         sizeClasses = 'h-10 px-5';
         break;
+    case 'md-lg':
+        sizeClasses = 'h-12 text-lg';
+        break;
     case 'lg':
         sizeClasses = 'px-8 py-3 text-xl';
         break;
     default:
         sizeClasses = '';
+    }
+
+    if (full) {
+        customClass = `${customClass} w-full justify-center`;
     }
 
     let buttonRender = (
@@ -72,7 +81,7 @@ export default function Button({
     return (
         <button
             disabled={disabled}
-            className={`transition disabled:opacity-50 disabled:cursor-not-allowed flex gap-x-2 items-center duration-300 buntomart-rounded ${variantClasses} ${sizeClasses} ${className}`}
+            className={`transition disabled:opacity-50 disabled:cursor-not-allowed flex gap-x-2 items-center duration-300 buntomart-rounded ${variantClasses} ${sizeClasses} ${className} ${customClass}`}
             type={type}
             onClick={onClick}
         >
@@ -86,6 +95,7 @@ Button.propTypes = {
     type: PropTypes.string,
     variant: PropTypes.string,
     size: PropTypes.string,
+    full: PropTypes.bool,
     className: PropTypes.string,
     loadingText: PropTypes.string,
     disabled: PropTypes.bool,
@@ -99,6 +109,7 @@ Button.defaultProps = {
     type: 'button',
     variant: 'primary',
     size: 'md',
+    full: false,
     className: '',
     loadingText: 'Loading...',
     disabled: false,

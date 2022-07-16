@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { IoWallet, IoPlay } from 'react-icons/io5';
+import { IoPlay } from 'react-icons/io5';
+import { HiEye } from 'react-icons/hi';
 
 import Button from '../UI/Button';
 
@@ -9,14 +11,19 @@ export default function ButtonAction({ data }) {
             <Button
                 disabled={!data.isReady}
                 title="Live Demo"
-                variant="outline-primary"
+                variant="outline-slate"
                 icon={<IoPlay />}
             />
-            <Button
-                disabled={!data.isReady}
-                title="Beli Sekarang"
-                icon={<IoWallet />}
-            />
+            <Link href={`/produk/${data.slug}`}>
+                <a>
+                    <Button
+                        disabled={!data.isReady}
+                        title="Lihat Detail"
+                        variant="secondary"
+                        icon={<HiEye />}
+                    />
+                </a>
+            </Link>
         </div>
     );
 }
@@ -24,11 +31,13 @@ export default function ButtonAction({ data }) {
 ButtonAction.propTypes = {
     data: PropTypes.shape({
         isReady: PropTypes.bool,
+        slug: PropTypes.string,
     }),
 };
 
 ButtonAction.defaultProps = {
     data: {
         isReady: false,
+        slug: '',
     },
 };
