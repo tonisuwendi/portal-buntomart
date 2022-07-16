@@ -8,12 +8,16 @@ import Button from '../UI/Button';
 export default function ButtonAction({ data }) {
     return (
         <div className="flex gap-x-3 mt-10">
-            <Button
-                disabled={!data.isReady}
-                title="Live Demo"
-                variant="outline-slate"
-                icon={<IoPlay />}
-            />
+            <Link href={data.demo}>
+                <a>
+                    <Button
+                        disabled={!data.isReady}
+                        title="Live Demo"
+                        variant="outline-slate"
+                        icon={<IoPlay />}
+                    />
+                </a>
+            </Link>
             <Link href={`/produk/${data.slug}`}>
                 <a>
                     <Button
@@ -31,6 +35,7 @@ export default function ButtonAction({ data }) {
 ButtonAction.propTypes = {
     data: PropTypes.shape({
         isReady: PropTypes.bool,
+        demo: PropTypes.string,
         slug: PropTypes.string,
     }),
 };
@@ -38,6 +43,7 @@ ButtonAction.propTypes = {
 ButtonAction.defaultProps = {
     data: {
         isReady: false,
+        demo: '',
         slug: '',
     },
 };
