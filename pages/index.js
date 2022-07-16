@@ -3,10 +3,6 @@ import Header from "../src/components/Header";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <Banner />
-      <div style={{ height: 500 }}></div>
-    </>
-  );
+    <h1 className="text-2xl mt-10 text-slate-600 font-bold text-center">Website sedang dalam pengembangan!</h1>
+  )
 }
