@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { IoWallet } from 'react-icons/io5';
+import { MdLogin } from 'react-icons/md';
 
 import Button from '../UI/Button';
 import Menu from './Menu';
 
-export default function Header() {
+export default function Header({ onScrollToView }) {
     const [headerClasses, setHeaderClasses] = useState('');
 
     useEffect(() => {
@@ -34,10 +35,18 @@ export default function Header() {
                             />
                         </a>
                     </Link>
-                    <Menu />
+                    <Menu onScrollToView={onScrollToView} />
                 </div>
-                <Button title="Beli Sekarang" icon={<IoWallet />} />
+                <Button title="Login" icon={<MdLogin />} />
             </div>
         </nav>
     );
 }
+
+Header.propTypes = {
+    onScrollToView: PropTypes.func,
+};
+
+Header.defaultProps = {
+    onScrollToView: () => {},
+};

@@ -14,7 +14,7 @@ export default function Textarea({
             </label>
             <textarea
                 id={id}
-                className="border border-slate-300 text-slate-900 text-sm buntomart-rounded focus:border-teal-500 focus:outline-teal-500 focus:outline-2 transition block w-full p-2.5"
+                className="bg-slate-50 border border-slate-300 text-slate-900 text-sm buntomart-rounded focus:border-teal-500 focus:outline-teal-500 focus:outline-2 transition block w-full p-2.5"
                 placeholder={placeholder}
                 onChange={onChange}
                 value={value}

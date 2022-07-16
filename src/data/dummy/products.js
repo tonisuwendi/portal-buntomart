@@ -1,6 +1,7 @@
 import { buntoappTech, buntoshopTech } from './technologies';
 
 export const productBuntoapp = {
+    id: 'b1',
     slug: 'buntoapp',
     name: 'Buntoapp',
     realPrice: '500.000',
@@ -16,6 +17,7 @@ export const productBuntoapp = {
 };
 
 export const productBuntoshop = {
+    id: 'b2',
     slug: 'buntoshop',
     name: 'Buntoshop (Coming Soon)',
     realPrice: '400.000',

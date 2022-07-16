@@ -2,21 +2,21 @@ module.exports = [
     {
         id: 'm1',
         title: 'Cara Membeli',
-        slug: '/',
+        reference: 'howToBuy',
     },
     {
         id: 'm2',
         title: 'Produk',
-        slug: '/',
+        reference: 'product',
     },
     {
         id: 'm3',
         title: 'Testimoni',
-        slug: '/',
+        reference: 'testimonial',
     },
     {
         id: 'm4',
         title: 'Afiliasi',
-        slug: '/',
+        slug: '/afiliasi',
     },
 ];
