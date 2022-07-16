@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { MdLogin } from 'react-icons/md';
@@ -8,6 +9,8 @@ import Menu from './Menu';
 
 export default function Header({ onScrollToView }) {
     const [headerClasses, setHeaderClasses] = useState('');
+
+    const router = useRouter();
 
     useEffect(() => {
         window.onscroll = () => {
@@ -19,6 +22,14 @@ export default function Header({ onScrollToView }) {
             }
         };
     }, []);
+
+    const scrollToViewHandler = (reference) => {
+        if (onScrollToView === null) {
+            router.push(`/?section=${reference}`);
+        } else {
+            onScrollToView(reference);
+        }
+    };
 
     return (
         <nav
@@ -35,7 +46,7 @@ export default function Header({ onScrollToView }) {
                             />
                         </a>
                     </Link>
-                    <Menu onScrollToView={onScrollToView} />
+                    <Menu onScrollToView={scrollToViewHandler} />
                 </div>
                 <Button title="Login" icon={<MdLogin />} />
             </div>
@@ -48,5 +59,5 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-    onScrollToView: () => {},
+    onScrollToView: null,
 };

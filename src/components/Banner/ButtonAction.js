@@ -1,8 +1,13 @@
+import { useRouter } from 'next/router';
 import { IoWallet, IoPlay } from 'react-icons/io5';
 
 import Button from '../UI/Button';
 
 export default function ButtonAction() {
+    const router = useRouter();
+
+    const goToProduct = () => router.push('/produk');
+
     return (
         <div className="flex justify-center gap-x-4 mt-10">
             <Button
@@ -11,7 +16,7 @@ export default function ButtonAction() {
                 size="lg"
                 icon={<IoPlay />}
             />
-            <Button title="Beli Sekarang" size="lg" icon={<IoWallet />} />
+            <Button onClick={goToProduct} title="Beli Sekarang" size="lg" icon={<IoWallet />} />
         </div>
     );
 }

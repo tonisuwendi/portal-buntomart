@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import Banner from '../src/components/Banner';
 import Footer from '../src/components/Footer';
@@ -11,6 +12,9 @@ export default function Home() {
     const howToBuyRef = useRef();
     const productRef = useRef();
     const testimonialRef = useRef();
+
+    const router = useRouter();
+    const sectionPage = router.query.section;
 
     const scrollToViewHandler = (reference) => {
         switch (reference) {
@@ -27,16 +31,22 @@ export default function Home() {
         }
     };
 
+    useEffect(() => {
+        scrollToViewHandler(sectionPage);
+    }, [router, sectionPage]);
+
     return (
         <>
             <Header onScrollToView={scrollToViewHandler} />
-            <Banner />
-            <div ref={howToBuyRef} />
-            <HowToBuy />
-            <div ref={productRef} />
-            <Products />
-            <div ref={testimonialRef} />
-            <Testimonial />
+            <main>
+                <Banner />
+                <div ref={howToBuyRef} />
+                <HowToBuy />
+                <div ref={productRef} />
+                <Products />
+                <div ref={testimonialRef} />
+                <Testimonial />
+            </main>
             <Footer />
         </>
     );

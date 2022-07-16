@@ -7,7 +7,7 @@ module.exports = [
     {
         id: 'm2',
         title: 'Produk',
-        reference: 'product',
+        slug: '/produk',
     },
     {
         id: 'm3',
