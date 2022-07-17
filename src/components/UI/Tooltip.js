@@ -38,7 +38,7 @@ export default function Tooltip({ children, text }) {
                         transform: 'translate(-50%,0) rotate(45deg)',
                     }}
                 />
-                <span className="text-sm">{text}</span>
+                <span className="text-sm" dangerouslySetInnerHTML={{ __html: text }} />
             </div>
             {children}
         </div>

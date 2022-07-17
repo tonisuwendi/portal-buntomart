@@ -23,27 +23,27 @@ export const productBuntoapp = {
             value: '28 kali',
         },
         {
-            id: 'i1',
+            id: 'i2',
             key: 'Di Rilis',
             value: '2 Agustus 2022',
         },
         {
-            id: 'i2',
+            id: 'i3',
             key: 'Terakhir Update',
             value: '2 minggu lalu',
         },
         {
-            id: 'i3',
+            id: 'i4',
             key: 'Versi',
             value: '1.0.2',
         },
         {
-            id: 'i4',
+            id: 'i5',
             key: 'Platform',
             value: 'Website',
         },
         {
-            id: 'i5',
+            id: 'i6',
             key: 'Kategori',
             value: 'Online Shop',
         },

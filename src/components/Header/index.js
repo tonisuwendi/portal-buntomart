@@ -21,6 +21,8 @@ export default function Header({ onScrollToView }) {
                 setHeaderClasses('');
             }
         };
+
+        return () => setHeaderClasses('');
     }, []);
 
     const scrollToViewHandler = (reference) => {

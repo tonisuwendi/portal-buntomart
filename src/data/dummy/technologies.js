@@ -49,12 +49,12 @@ export const buntoappTech = [
     },
     {
         id: 't3',
-        title: 'PHP',
+        title: 'PHP&nbsp;7',
         icon: '/images/logo-php.svg',
     },
     {
         id: 't4',
-        title: 'Codeigniter',
+        title: 'Codeigniter&nbsp;3',
         icon: '/images/logo-codeigniter.svg',
     },
 ];
@@ -62,7 +62,7 @@ export const buntoappTech = [
 export const buntoshopTech = [
     {
         id: 't1',
-        title: 'Bootstrap',
+        title: 'Bootstrap&nbsp;4',
         icon: '/images/logo-bootstrap-4.svg',
     },
     {
@@ -77,12 +77,12 @@ export const buntoshopTech = [
     },
     {
         id: 't4',
-        title: 'PHP',
+        title: 'PHP&nbsp;7',
         icon: '/images/logo-php.svg',
     },
     {
         id: 't5',
-        title: 'Codeigniter',
+        title: 'Codeigniter&nbsp;3',
         icon: '/images/logo-codeigniter.svg',
     },
 ];

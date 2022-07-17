@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-export default function CardInfo({ children }) {
+export default function CardInfo({ children, alignItems }) {
     return (
-        <div className="bg-white px-6 py-7 mb-5 flex flex-col items-center items-start drop-shadow rounded-lg">
+        <div className={`bg-white px-6 py-7 mb-5 flex flex-col ${alignItems} drop-shadow rounded-lg`}>
             {children}
         </div>
     );
@@ -10,8 +10,10 @@ export default function CardInfo({ children }) {
 
 CardInfo.propTypes = {
     children: PropTypes.arrayOf(PropTypes.element),
+    alignItems: PropTypes.string,
 };
 
 CardInfo.defaultProps = {
     children: [],
+    alignItems: 'items-center',
 };

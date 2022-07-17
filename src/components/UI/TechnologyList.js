@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Tooltip from './Tooltip';
 
 export default function TechnologyList({
-    technologies, height, gap, align,
+    technologies, height, gap, align, mt,
 }) {
     return (
         <div
-            className={`flex ${align === 'center' ? 'justify-center' : ''} ${gap} mt-7`}
+            className={`flex ${align === 'center' ? 'justify-center' : ''} ${gap} mt-${mt}`}
         >
             {technologies.map((tech) => (
                 <Tooltip text={tech.title} key={tech.id}>
@@ -28,6 +28,7 @@ TechnologyList.propTypes = {
     height: PropTypes.number,
     gap: PropTypes.string,
     align: PropTypes.string,
+    mt: PropTypes.string,
 };
 
 TechnologyList.defaultProps = {
@@ -35,4 +36,5 @@ TechnologyList.defaultProps = {
     height: 25,
     gap: 'gap-x-5',
     align: 'center',
+    mt: '7',
 };
