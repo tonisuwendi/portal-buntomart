@@ -12,6 +12,7 @@ export default function MainInfo({
         realPrice,
         discount,
         newPrice,
+        slug,
     },
 }) {
     return (
@@ -24,7 +25,11 @@ export default function MainInfo({
                         <Button title="Lihat Demo" size="md-lg" variant="outline-primary" icon={<IoPlay />} full />
                     </a>
                 </Link>
-                <Button title="Beli Sekarang" size="md-lg" className="mt-4" icon={<IoWallet />} full />
+                <Link href={`/checkout/${slug}`}>
+                    <a>
+                        <Button title="Beli Sekarang" size="md-lg" className="mt-4" icon={<IoWallet />} full />
+                    </a>
+                </Link>
             </div>
         </CardInfo>
     );
@@ -36,6 +41,7 @@ MainInfo.propTypes = {
         realPrice: PropTypes.string,
         discount: PropTypes.string,
         newPrice: PropTypes.string,
+        slug: PropTypes.string,
     }),
 };
 
@@ -45,5 +51,6 @@ MainInfo.defaultProps = {
         realPrice: '0',
         discount: '0%',
         newPrice: '0',
+        slug: '',
     },
 };

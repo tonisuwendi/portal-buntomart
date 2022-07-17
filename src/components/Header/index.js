@@ -7,7 +7,7 @@ import { MdLogin } from 'react-icons/md';
 import Button from '../UI/Button';
 import Menu from './Menu';
 
-export default function Header({ onScrollToView }) {
+export default function Header({ onScrollToView, bgWhite }) {
     const [headerClasses, setHeaderClasses] = useState('');
 
     const router = useRouter();
@@ -35,15 +35,15 @@ export default function Header({ onScrollToView }) {
 
     return (
         <nav
-            className={`py-4 h-20 flex items-center fixed z-10 w-full transition ${headerClasses}`}
+            className={`${bgWhite ? 'bg-white ' : ''}py-4 h-20 flex items-center fixed z-10 w-full transition ${headerClasses}`}
         >
             <div className="flex items-center justify-between mx-auto w-1100">
                 <div className="flex items-center">
                     <Link href="/">
                         <a>
                             <img
-                                src="/images/logo-buntomart-dark.svg"
-                                className="h-36"
+                                src="/images/logo-buntomart-dark.png"
+                                className="w-32"
                                 alt="logo buntomart"
                             />
                         </a>
@@ -58,8 +58,10 @@ export default function Header({ onScrollToView }) {
 
 Header.propTypes = {
     onScrollToView: PropTypes.func,
+    bgWhite: PropTypes.bool,
 };
 
 Header.defaultProps = {
     onScrollToView: null,
+    bgWhite: false,
 };
