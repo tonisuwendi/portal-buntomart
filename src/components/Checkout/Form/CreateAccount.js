@@ -66,7 +66,7 @@ export default function CreateAccount() {
                 withButton
             />
             <div className="p-4 text-sm bg-gray-100 rounded-lg dark:bg-gray-700 mt-5" role="alert">
-                <span className="font-medium flex items-center text-slate-700">
+                <span className="font-medium flex items-center text-slate-700 mb-1">
                     <MdInfo className="mr-1" />
                     Email dan password digunakan untuk login dashboard.
                     <br />

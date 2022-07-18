@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { IoWallet } from 'react-icons/io5';
 
@@ -8,6 +9,13 @@ import PriceList from './PriceList';
 import Button from '../UI/Button';
 
 export default function Info({ productData }) {
+    const [couponCode, setCouponCode] = useState('');
+
+    const changeCouponeCodeHandler = (event) => {
+        const { value } = event.target;
+        setCouponCode(value.toUpperCase());
+    };
+
     return (
         <Card>
             <h3 className="text-xl text-slate-700 font-medium mb-4">Ringkasan Pesanan</h3>
@@ -21,7 +29,9 @@ export default function Info({ productData }) {
                 id="coupon"
                 label="Kode Kupon"
                 buttonText="Terapkan"
-                optionalText="(Jika ada)"
+                value={couponCode}
+                onChange={changeCouponeCodeHandler}
+                buttonDisabled={couponCode.trim() === ''}
                 withButton
             />
             <hr className="my-5" />
