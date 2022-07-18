@@ -11,9 +11,9 @@ export default function BuyerData() {
 
     return (
         <Card>
-            <h3 className="text-xl text-slate-700 mb-4">Data Pembeli</h3>
+            <h3 className="text-xl text-slate-700 font-medium mb-4">Data Pembeli</h3>
             <hr />
-            <div className="mt-5">
+            <div className="mt-6">
                 <Toggle
                     id="buyerDataCheckbox"
                     label="Gunakan akun yang sudah ada"
