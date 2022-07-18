@@ -52,7 +52,7 @@ module.exports = [
                 logo: '/images/logo-shopeepay.png',
             },
             {
-                id: 'p2c',
+                id: 'p2e',
                 name: 'Scan QRIS',
                 logo: '/images/logo-qris.png',
             },

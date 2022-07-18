@@ -7,7 +7,7 @@ export default function Checkout() {
             <div className="w-[650px]">
                 <Form />
             </div>
-            <div className="w-[400px]">
+            <div className="w-[420px]">
                 <Info />
             </div>
         </section>
