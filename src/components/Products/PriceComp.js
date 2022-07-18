@@ -9,7 +9,7 @@ export default function PriceComp({ realPrice, discount, newPrice }) {
                     {discount}
                 </span>
             </div>
-            <h3 className="text-2xl text-slate-800 font-black text-indigo-500">
+            <h3 className="text-2xl font-black text-indigo-500">
                 <span className="text-3xl">{`Rp${newPrice}`}</span>
             </h3>
         </>

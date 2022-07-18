@@ -12,6 +12,7 @@ export const productBuntoapp = {
     technologies: buntoappTech,
     image: 'https://www.hyperthe.me/images/hero-image-1.png',
     previewImg: '/images/preview-buntoapp.png',
+    previewHome: '/images/preview-home-buntoapp.png',
     demo: 'https://google.com',
     isReady: true,
     description:
@@ -62,6 +63,7 @@ export const productBuntoshop = {
     technologies: buntoshopTech,
     image: 'https://www.hyperthe.me/images/feature-0.png',
     previewImg: '/images/preview-buntoapp.png',
+    previewHome: '/images/preview-home-buntoapp.png',
     demo: 'https://google.com',
     isReady: false,
     description:
