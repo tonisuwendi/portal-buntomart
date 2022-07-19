@@ -1,15 +1,12 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
+import CheckoutContext from '../../../context/checkoutContext';
 import PaymentMethodItem from './PaymentMethodItem';
 import paymentMethod from '../../../data/dummy/paymentMethod';
 import Card from '../Card';
 
 export default function PaymentMethod() {
-    const [paymentSelected, setPaymentSelected] = useState('');
-
-    const selectPaymentHandler = (id) => {
-        setPaymentSelected(id);
-    };
+    const checkoutContext = useContext(CheckoutContext);
 
     return (
         <Card>
@@ -28,9 +25,9 @@ export default function PaymentMethod() {
                                         name={data.name}
                                         logo={data.logo}
                                         info={data.info}
-                                        selected={data.id === paymentSelected}
+                                        selected={data.id === checkoutContext.paymentMethod}
                                         disabled={data.disabled}
-                                        onSelectPayment={selectPaymentHandler}
+                                        onSelectPayment={(id) => checkoutContext.setPaymentMethod(id)}
                                     />
                                 ))
                             }

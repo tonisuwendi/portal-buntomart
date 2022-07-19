@@ -1,19 +1,20 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { IoWallet } from 'react-icons/io5';
 
+import CheckoutContext from '../../context/checkoutContext';
 import Card from './Card';
 import Input from '../UI/form/Input';
 import ProductPreview from './ProductPreview';
 import PriceList from './PriceList';
 import Button from '../UI/Button';
 
-export default function Info({ productData }) {
-    const [couponCode, setCouponCode] = useState('');
+export default function Info({ onBuy, productData }) {
+    const checkoutContext = useContext(CheckoutContext);
 
     const changeCouponeCodeHandler = (event) => {
         const { value } = event.target;
-        setCouponCode(value.toUpperCase());
+        checkoutContext.setCouponCode(value.toUpperCase());
     };
 
     return (
@@ -29,9 +30,9 @@ export default function Info({ productData }) {
                 id="coupon"
                 label="Kode Kupon"
                 buttonText="Terapkan"
-                value={couponCode}
+                value={checkoutContext.couponCode}
                 onChange={changeCouponeCodeHandler}
-                buttonDisabled={couponCode.trim() === ''}
+                buttonDisabled={checkoutContext.couponCode.trim() === ''}
                 withButton
             />
             <hr className="my-5" />
@@ -43,12 +44,19 @@ export default function Info({ productData }) {
                 {' '}
                 Buntomart.
             </p>
-            <Button title="Bayar Sekarang" size="lg" icon={<IoWallet />} full />
+            <Button
+                title="Bayar Sekarang"
+                size="lg"
+                icon={<IoWallet />}
+                onClick={onBuy}
+                full
+            />
         </Card>
     );
 }
 
 Info.propTypes = {
+    onBuy: PropTypes.func,
     productData: PropTypes.shape({
         previewHome: PropTypes.string,
         name: PropTypes.string,
@@ -57,6 +65,7 @@ Info.propTypes = {
 };
 
 Info.defaultProps = {
+    onBuy: () => {},
     productData: {
         previewHome: '',
         name: '',

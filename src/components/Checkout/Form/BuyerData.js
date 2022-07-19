@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
+import CheckoutContext from '../../../context/checkoutContext';
 import Toggle from '../../UI/form/Toggle';
 import Card from '../Card';
 import CreateAccount from './CreateAccount';
 
 export default function BuyerData() {
-    const [isCreateAccount, setIsCreateAccount] = useState(true);
-
-    const changeTypeBuyerHandler = () => setIsCreateAccount((prevState) => !prevState);
+    const checkoutContext = useContext(CheckoutContext);
 
     return (
         <Card>
@@ -17,12 +16,12 @@ export default function BuyerData() {
                 <Toggle
                     id="buyerDataCheckbox"
                     label="Gunakan akun yang sudah ada"
-                    checked={!isCreateAccount}
-                    onChange={changeTypeBuyerHandler}
+                    checked={!checkoutContext.isCreateAccount}
+                    onChange={() => checkoutContext.setIsCreateAccount(!checkoutContext.isCreateAccount)}
                 />
                 <div className="mt-4">
                     {
-                        isCreateAccount ? (
+                        checkoutContext.isCreateAccount ? (
                             <CreateAccount />
                         ) : (
                             null
