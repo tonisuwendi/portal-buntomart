@@ -6,7 +6,7 @@ import AlertInfo from './AlertInfo';
 import Modal from '../UI/Modal';
 import Input from '../UI/form/Input';
 import Textarea from '../UI/form/Textarea';
-import { insertTestimonial } from '../../api/testimoni';
+import { insertTestimonial } from '../../api/endpoints';
 
 export default function Testimonial() {
     const [showModal, setShowModal] = useState(false);

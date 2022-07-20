@@ -19,10 +19,14 @@ const checkoutReducer = (state, action) => {
         return { ...state, password: action.value };
     case ACTION_TYPE.SET_REFERENCE_CODE:
         return { ...state, referenceCode: action.value };
+    case ACTION_TYPE.SET_REFERENCE_DISCOUNT:
+        return { ...state, referenceDiscount: action.value };
     case ACTION_TYPE.SET_PAYMENT_METHOD:
         return { ...state, paymentMethod: action.value };
     case ACTION_TYPE.SET_COUPON_CODE:
         return { ...state, couponCode: action.value };
+    case ACTION_TYPE.SET_COUPON_DISCOUNT:
+        return { ...state, couponDiscount: action.value };
     case ACTION_TYPE.SET_INITIAL_STATE:
         return INITIAL_STATE;
     default:
@@ -39,15 +43,19 @@ export function CheckoutProvider({ children }) {
         email: state.email,
         password: state.password,
         referenceCode: state.referenceCode,
+        referenceDiscount: state.referenceDiscount,
         paymentMethod: state.paymentMethod,
         couponCode: state.couponCode,
+        couponDiscount: state.couponDiscount,
         setIsCreateAccount: (value) => dispatch({ type: ACTION_TYPE.SET_IS_CREATE_ACCOUNT, value }),
         setFullName: (value) => dispatch({ type: ACTION_TYPE.SET_FULL_NAME, value }),
         setEmail: (value) => dispatch({ type: ACTION_TYPE.SET_EMAIL, value }),
         setPassword: (value) => dispatch({ type: ACTION_TYPE.SET_PASSWORD, value }),
         setReferenceCode: (value) => dispatch({ type: ACTION_TYPE.SET_REFERENCE_CODE, value }),
+        setReferenceDiscount: (value) => dispatch({ type: ACTION_TYPE.SET_REFERENCE_DISCOUNT, value }),
         setPaymentMethod: (value) => dispatch({ type: ACTION_TYPE.SET_PAYMENT_METHOD, value }),
         setCouponCode: (value) => dispatch({ type: ACTION_TYPE.SET_COUPON_CODE, value }),
+        setCouponDiscount: (value) => dispatch({ type: ACTION_TYPE.SET_COUPON_DISCOUNT, value }),
         setInitialState: () => dispatch({ type: ACTION_TYPE.SET_INITIAL_STATE }),
     };
 

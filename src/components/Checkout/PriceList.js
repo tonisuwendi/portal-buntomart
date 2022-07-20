@@ -1,41 +1,34 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import PriceListItem from './PriceListItem';
+import CheckoutContext from '../../context/checkoutContext';
+import { formattedPrice, stringRpToNumber } from '../../utils/helpers';
 
-const stringRpToNumber = (price) => Number(price.replace(/\./g, ''));
-export default function PriceList({ newPrice, discountReference, discountCoupon }) {
+export default function PriceList({ newPrice }) {
     const [uniqCode, setUniqCode] = useState(0);
+    const { referenceDiscount, couponDiscount } = useContext(CheckoutContext);
 
     useEffect(() => {
         const newValue = Math.floor(Math.random() * (999 - 100 + 1) + 100);
         setUniqCode(newValue);
     }, []);
 
-    const totalBill = stringRpToNumber(newPrice) + discountCoupon + discountCoupon + uniqCode;
-
-    const formattedFormatBill = new Intl.NumberFormat('id-ID').format(totalBill);
+    const totalBill = stringRpToNumber(newPrice) - referenceDiscount - couponDiscount + uniqCode;
 
     return (
         <>
             <PriceListItem title="Harga Produk" price={newPrice} />
-            <PriceListItem title="Diskon Referensi" price={String(discountReference)} />
-            <PriceListItem title="Diskon Kupon" price={String(discountCoupon)} />
+            <PriceListItem title="Diskon Referensi" price={formattedPrice(referenceDiscount)} />
+            <PriceListItem title="Diskon Kupon" price={formattedPrice(couponDiscount)} />
             <PriceListItem title="Biaya Layanan" />
             <PriceListItem title="Kode Unik" price={String(uniqCode)} />
             <hr className="my-3" />
-            <PriceListItem title="Total Tagihan" price={formattedFormatBill} isTotal />
+            <PriceListItem title="Total Tagihan" price={formattedPrice(totalBill)} isTotal />
         </>
     );
 }
 
 PriceList.propTypes = {
     newPrice: PropTypes.string.isRequired,
-    discountReference: PropTypes.number,
-    discountCoupon: PropTypes.number,
-};
-
-PriceList.defaultProps = {
-    discountReference: 0,
-    discountCoupon: 0,
 };

@@ -1,11 +1,12 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import CheckoutContext from '../../../context/checkoutContext';
 import Toggle from '../../UI/form/Toggle';
 import Card from '../Card';
 import CreateAccount from './CreateAccount';
 
-export default function BuyerData() {
+export default function BuyerData({ productData }) {
     const checkoutContext = useContext(CheckoutContext);
 
     return (
@@ -22,7 +23,7 @@ export default function BuyerData() {
                 <div className="mt-4">
                     {
                         checkoutContext.isCreateAccount ? (
-                            <CreateAccount />
+                            <CreateAccount productData={productData} />
                         ) : (
                             null
                         )
@@ -32,3 +33,7 @@ export default function BuyerData() {
         </Card>
     );
 }
+
+BuyerData.propTypes = {
+    productData: PropTypes.shape({}).isRequired,
+};

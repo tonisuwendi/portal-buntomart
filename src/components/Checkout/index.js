@@ -17,7 +17,7 @@ export default function Checkout({ productData }) {
     return (
         <section className="flex justify-between w-1100 mx-auto mt-5">
             <div className="w-[650px]">
-                <Form />
+                <Form productData={productData} />
             </div>
             <div className="w-[420px]">
                 <Info onBuy={handleBuy} productData={productData} />

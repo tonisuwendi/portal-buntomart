@@ -1,11 +1,17 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import { MdInfo } from 'react-icons/md';
 
 import CheckoutContext from '../../../context/checkoutContext';
 import Input from '../../UI/form/Input';
 import InputPassword from '../../UI/form/InputPassword';
+import { checkReferenceCode } from '../../../api/endpoints';
+import { calculateDiscount, catchError } from '../../../utils/helpers';
 
-export default function CreateAccount() {
+export default function CreateAccount({ productData: { newPrice } }) {
+    const [referenceLoading, setReferenceLoading] = useState(false);
+    const [responseReference, setResponseReference] = useState(null);
+
     const checkoutContext = useContext(CheckoutContext);
 
     const changeNameHandler = (event) => {
@@ -26,6 +32,31 @@ export default function CreateAccount() {
     const changeReferenceHandler = (event) => {
         const { value } = event.target;
         checkoutContext.setReferenceCode(value.toUpperCase());
+        setResponseReference(null);
+    };
+
+    const checkReferenceCodeHandler = async () => {
+        setReferenceLoading(true);
+
+        const payload = { code: checkoutContext.referenceCode };
+        try {
+            const res = await checkReferenceCode(payload);
+            if (!res.success) throw new Error(res.message);
+            const referenceDiscount = calculateDiscount(newPrice, res.discount);
+            checkoutContext.setReferenceDiscount(referenceDiscount);
+            setResponseReference({
+                type: 'SUCCESS',
+                message: res.message,
+            });
+        } catch (error) {
+            checkoutContext.setReferenceDiscount(0);
+            setResponseReference({
+                type: 'ERROR',
+                message: catchError(error),
+            });
+        } finally {
+            setReferenceLoading(false);
+        }
     };
 
     return (
@@ -59,8 +90,12 @@ export default function CreateAccount() {
                 buttonText="Cek Kode"
                 value={checkoutContext.referenceCode}
                 onChange={changeReferenceHandler}
-                buttonDisabled={checkoutContext.referenceCode.trim() === ''}
+                buttonDisabled={checkoutContext.referenceCode.trim() === '' || referenceLoading}
                 optionalText="(Jika ada)"
+                buttonLoading={referenceLoading}
+                buttonClicked={checkReferenceCodeHandler}
+                inputError={responseReference?.type === 'ERROR' ? responseReference.message : ''}
+                inputSuccess={responseReference?.type === 'SUCCESS' ? responseReference.message : ''}
                 withButton
             />
             <div className="p-4 text-sm bg-gray-100 rounded-lg dark:bg-gray-700 mt-5" role="alert">
@@ -77,3 +112,15 @@ export default function CreateAccount() {
         </form>
     );
 }
+
+CreateAccount.propTypes = {
+    productData: PropTypes.shape({
+        newPrice: PropTypes.string,
+    }),
+};
+
+CreateAccount.defaultProps = {
+    productData: {
+        newPrice: '',
+    },
+};

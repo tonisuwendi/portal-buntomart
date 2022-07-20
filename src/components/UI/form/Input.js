@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { ImSpinner2 } from 'react-icons/im';
 
 export default function Input({
     id,
@@ -9,9 +10,12 @@ export default function Input({
     withButton,
     buttonText,
     buttonDisabled,
+    buttonLoading,
+    buttonClicked,
     required,
     optionalText,
     inputError,
+    inputSuccess,
     textHelper,
     onChange,
 }) {
@@ -19,7 +23,7 @@ export default function Input({
         <input
             type={type}
             id={id}
-            className={`bg-slate-50 border ${inputError ? 'border-red-400' : 'border-slate-300'} text-slate-900 text-sm buntomart-rounded focus:border-teal-500 focus:outline-teal-500 focus:outline-2 transition block w-full p-2.5`}
+            className={`bg-slate-50 border border-slate-300 ${inputSuccess ? 'border-green-500' : ''} ${inputError ? 'border-red-400' : ''} text-slate-900 text-sm buntomart-rounded focus:border-teal-500 focus:outline-teal-500 focus:outline-2 transition block w-full p-2.5`}
             placeholder={placeholder}
             onChange={onChange}
             value={value}
@@ -35,9 +39,11 @@ export default function Input({
                 <button
                     type="button"
                     disabled={buttonDisabled}
-                    className={`transition disabled:opacity-50 disabled:cursor-not-allowed text-white absolute right-[3px] bottom-[3px] buntomart-bg-color-primary text-white${buttonDisabled ? '' : ' buntomart-bg-color-primary-hover'} font-medium rounded text-sm px-5 py-2`}
+                    onClick={buttonClicked}
+                    className={`flex items-center justify-center transition disabled:cursor-not-allowed text-white absolute right-[3px] bottom-[3px] buntomart-bg-color-primary text-white${buttonDisabled ? '' : ' buntomart-bg-color-primary-hover'} ${buttonLoading ? '' : 'disabled:opacity-50'} font-medium rounded text-sm px-5 py-2`}
                 >
-                    {buttonText}
+                    {buttonLoading && <ImSpinner2 className="absolute text-lg animate-spin" />}
+                    <span className={buttonLoading ? 'invisible' : 'visible'}>{buttonText}</span>
                 </button>
             </div>
         );
@@ -63,6 +69,7 @@ export default function Input({
             </label>
             {inputContainer}
             {inputError && <small className="text-xs block mt-1 text-red-500">{inputError}</small>}
+            {inputSuccess && <small className="text-xs block mt-1 text-green-600">{inputSuccess}</small>}
             <small className="text-xs block mt-1 text-slate-500">{textHelper}</small>
         </div>
     );
@@ -76,10 +83,13 @@ Input.propTypes = {
     value: PropTypes.string,
     textHelper: PropTypes.string,
     inputError: PropTypes.string,
+    inputSuccess: PropTypes.string,
     buttonText: PropTypes.string,
     optionalText: PropTypes.string,
     withButton: PropTypes.bool,
     buttonDisabled: PropTypes.bool,
+    buttonLoading: PropTypes.bool,
+    buttonClicked: PropTypes.func,
     required: PropTypes.bool,
     onChange: PropTypes.func,
 };
@@ -92,10 +102,13 @@ Input.defaultProps = {
     value: '',
     textHelper: '',
     inputError: '',
+    inputSuccess: '',
     buttonText: '',
     optionalText: '',
     withButton: false,
     buttonDisabled: false,
+    buttonLoading: false,
+    buttonClicked: () => {},
     required: false,
     onChange: () => {},
 };
