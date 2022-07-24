@@ -8,6 +8,8 @@ export const INITIAL_STATE = {
     paymentMethod: '',
     couponCode: '',
     couponDiscount: 0,
+    uniqCode: 0,
+    totalBill: 0,
     setIsCreateAccount: () => {},
     setFullName: () => {},
     setEmail: () => {},
@@ -17,6 +19,8 @@ export const INITIAL_STATE = {
     setPaymentMethod: () => {},
     setCouponCode: () => {},
     setCouponDiscount: () => {},
+    setUniqCode: () => {},
+    setTotalBill: () => {},
     setInitialState: () => {},
 };
 
@@ -30,5 +34,7 @@ export const ACTION_TYPE = {
     SET_PAYMENT_METHOD: 'SET_PAYMENT_METHOD',
     SET_COUPON_CODE: 'SET_COUPON_CODE',
     SET_COUPON_DISCOUNT: 'SET_COUPON_DISCOUNT',
+    SET_UNIQ_CODE: 'SET_UNIQ_CODE',
+    SET_TOTAL_BILL: 'SET_TOTAL_BILL',
     SET_INITIAL_STATE: 'SET_INITIAL_STATE',
 };

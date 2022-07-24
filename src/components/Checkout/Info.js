@@ -11,33 +11,41 @@ import Button from '../UI/Button';
 import { checkCouponCode } from '../../api/endpoints';
 import { calculateDiscount, catchError } from '../../utils/helpers';
 
-export default function Info({ onBuy, productData }) {
+export default function Info({ onBuy, buttonLoading, productData }) {
     const [couponLoading, setCouponLoading] = useState(false);
     const [responseCoupon, setResponseCoupon] = useState(null);
 
-    const checkoutContext = useContext(CheckoutContext);
+    const {
+        fullName,
+        email,
+        password,
+        paymentMethod,
+        couponCode,
+        setCouponCode,
+        setCouponDiscount,
+    } = useContext(CheckoutContext);
 
     const changeCouponeCodeHandler = (event) => {
         const { value } = event.target;
-        checkoutContext.setCouponCode(value.toUpperCase());
+        setCouponCode(value.toUpperCase());
         setResponseCoupon(null);
     };
 
     const checkCouponCodeHandler = async () => {
         setCouponLoading(true);
 
-        const payload = { code: checkoutContext.couponCode };
+        const payload = { code: couponCode };
         try {
             const res = await checkCouponCode(payload);
             if (!res.success) throw new Error(res.message);
             const couponDiscount = calculateDiscount(productData.newPrice, res.discount);
-            checkoutContext.setCouponDiscount(couponDiscount);
+            setCouponDiscount(couponDiscount);
             setResponseCoupon({
                 type: 'SUCCESS',
                 message: res.message,
             });
         } catch (error) {
-            checkoutContext.setCouponDiscount(0);
+            setCouponDiscount(0);
             setResponseCoupon({
                 type: 'ERROR',
                 message: catchError(error),
@@ -46,6 +54,8 @@ export default function Info({ onBuy, productData }) {
             setCouponLoading(false);
         }
     };
+
+    const buttonDisabled = !fullName || fullName.length > 50 || !email || !password || !paymentMethod;
 
     return (
         <Card>
@@ -60,9 +70,9 @@ export default function Info({ onBuy, productData }) {
                 id="coupon"
                 label="Kode Kupon"
                 buttonText="Terapkan"
-                value={checkoutContext.couponCode}
+                value={couponCode}
                 onChange={changeCouponeCodeHandler}
-                buttonDisabled={checkoutContext.couponCode.trim() === '' || couponLoading}
+                buttonDisabled={couponCode.trim() === '' || couponLoading}
                 buttonClicked={checkCouponCodeHandler}
                 buttonLoading={couponLoading}
                 inputError={responseCoupon?.type === 'ERROR' ? responseCoupon.message : ''}
@@ -83,6 +93,8 @@ export default function Info({ onBuy, productData }) {
                 size="lg"
                 icon={<IoWallet />}
                 onClick={onBuy}
+                disabled={buttonDisabled || buttonLoading}
+                loading={buttonLoading}
                 full
             />
         </Card>
@@ -91,6 +103,7 @@ export default function Info({ onBuy, productData }) {
 
 Info.propTypes = {
     onBuy: PropTypes.func,
+    buttonLoading: PropTypes.bool,
     productData: PropTypes.shape({
         previewHome: PropTypes.string,
         name: PropTypes.string,
@@ -100,6 +113,7 @@ Info.propTypes = {
 
 Info.defaultProps = {
     onBuy: () => {},
+    buttonLoading: false,
     productData: {
         previewHome: '',
         name: '',

@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import PriceListItem from './PriceListItem';
 import CheckoutContext from '../../context/checkoutContext';
 import { formattedPrice, stringRpToNumber } from '../../utils/helpers';
 
 export default function PriceList({ newPrice }) {
-    const [uniqCode, setUniqCode] = useState(0);
-    const { referenceDiscount, couponDiscount } = useContext(CheckoutContext);
+    const {
+        referenceDiscount, couponDiscount, uniqCode, totalBill, setUniqCode, setTotalBill,
+    } = useContext(CheckoutContext);
 
     useEffect(() => {
-        const newValue = Math.floor(Math.random() * (999 - 100 + 1) + 100);
-        setUniqCode(newValue);
-    }, []);
-
-    const totalBill = stringRpToNumber(newPrice) - referenceDiscount - couponDiscount + uniqCode;
+        const newUniqCode = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+        setUniqCode(newUniqCode);
+        const newTotalBill = stringRpToNumber(newPrice) - referenceDiscount - couponDiscount + newUniqCode;
+        setTotalBill(newTotalBill);
+    }, [referenceDiscount, couponDiscount]);
 
     return (
         <>

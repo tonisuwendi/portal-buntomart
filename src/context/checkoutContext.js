@@ -8,25 +8,30 @@ import { ACTION_TYPE, INITIAL_STATE } from './checkoutUtils';
 const CheckoutContext = createContext(INITIAL_STATE);
 
 const checkoutReducer = (state, action) => {
+    const { value } = action;
     switch (action.type) {
     case ACTION_TYPE.SET_IS_CREATE_ACCOUNT:
-        return { ...state, isCreateAccount: action.value };
+        return { ...state, isCreateAccount: value };
     case ACTION_TYPE.SET_FULL_NAME:
-        return { ...state, fullName: action.value };
+        return { ...state, fullName: value };
     case ACTION_TYPE.SET_EMAIL:
-        return { ...state, email: action.value };
+        return { ...state, email: value };
     case ACTION_TYPE.SET_PASSWORD:
-        return { ...state, password: action.value };
+        return { ...state, password: value };
     case ACTION_TYPE.SET_REFERENCE_CODE:
-        return { ...state, referenceCode: action.value };
+        return { ...state, referenceCode: value };
     case ACTION_TYPE.SET_REFERENCE_DISCOUNT:
-        return { ...state, referenceDiscount: action.value };
+        return { ...state, referenceDiscount: value };
     case ACTION_TYPE.SET_PAYMENT_METHOD:
-        return { ...state, paymentMethod: action.value };
+        return { ...state, paymentMethod: value };
     case ACTION_TYPE.SET_COUPON_CODE:
-        return { ...state, couponCode: action.value };
+        return { ...state, couponCode: value };
     case ACTION_TYPE.SET_COUPON_DISCOUNT:
-        return { ...state, couponDiscount: action.value };
+        return { ...state, couponDiscount: value };
+    case ACTION_TYPE.SET_UNIQ_CODE:
+        return { ...state, uniqCode: value };
+    case ACTION_TYPE.SET_TOTAL_BILL:
+        return { ...state, totalBill: value };
     case ACTION_TYPE.SET_INITIAL_STATE:
         return INITIAL_STATE;
     default:
@@ -47,6 +52,8 @@ export function CheckoutProvider({ children }) {
         paymentMethod: state.paymentMethod,
         couponCode: state.couponCode,
         couponDiscount: state.couponDiscount,
+        uniqCode: state.uniqCode,
+        totalBill: state.totalBill,
         setIsCreateAccount: (value) => dispatch({ type: ACTION_TYPE.SET_IS_CREATE_ACCOUNT, value }),
         setFullName: (value) => dispatch({ type: ACTION_TYPE.SET_FULL_NAME, value }),
         setEmail: (value) => dispatch({ type: ACTION_TYPE.SET_EMAIL, value }),
@@ -56,6 +63,8 @@ export function CheckoutProvider({ children }) {
         setPaymentMethod: (value) => dispatch({ type: ACTION_TYPE.SET_PAYMENT_METHOD, value }),
         setCouponCode: (value) => dispatch({ type: ACTION_TYPE.SET_COUPON_CODE, value }),
         setCouponDiscount: (value) => dispatch({ type: ACTION_TYPE.SET_COUPON_DISCOUNT, value }),
+        setUniqCode: (value) => dispatch({ type: ACTION_TYPE.SET_UNIQ_CODE, value }),
+        setTotalBill: (value) => dispatch({ type: ACTION_TYPE.SET_TOTAL_BILL, value }),
         setInitialState: () => dispatch({ type: ACTION_TYPE.SET_INITIAL_STATE }),
     };
 
