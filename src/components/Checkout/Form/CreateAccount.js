@@ -106,7 +106,7 @@ export default function CreateAccount({ productData: { newPrice } }) {
                 </span>
                 <span className="text-slate-500">
                     Dashboard Buntomart adalah sebuah tempat untuk memudahkan member ketika ingin
-                    meminta bantuan, melaporkan suatu hal, dan lain-lain.
+                    meminta bantuan, mendapatkan update kode program, dan lain-lain.
                 </span>
             </div>
         </form>

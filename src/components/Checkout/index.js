@@ -51,6 +51,8 @@ export default function Checkout({ productData }) {
                 toast.error(errorMsg);
             } else if (errorData.info_type === 'modal') {
                 setErrorMessage(errorMsg);
+            } else {
+                toast.error(errorMsg);
             }
         } finally {
             setIsLoading('');

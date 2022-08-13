@@ -1,76 +1,64 @@
 module.exports = [
     {
-        id: 'p1',
+        id: 'va',
         title: 'Transfer Virtual Account',
         data: [
             {
-                id: 'p1a',
-                name: 'BCA Virtual Account',
-                logo: '/images/logo-bca.png',
-            },
-            {
-                id: 'p1b',
+                id: 'bni_va',
                 name: 'BNI Virtual Account',
                 logo: '/images/logo-bni.png',
-                info: 'Hanya tersedia pukul 00:00 - 22:30 WIB',
-                disabled: true,
+                payment_type: 'bank_transfer',
+                bank_code: 'bni',
             },
             {
-                id: 'p1c',
+                id: 'bri_va',
                 name: 'BRI Virtual Account',
                 logo: '/images/logo-bri.png',
+                payment_type: 'bank_transfer',
+                bank_code: 'bri',
             },
             {
-                id: 'p1d',
+                id: 'mandiri_va',
                 name: 'Mandiri Virtual Account',
                 logo: '/images/logo-mandiri.png',
+                payment_type: 'echannel',
+            },
+            {
+                id: 'permata_va',
+                name: 'Permata Virtual Account',
+                logo: '/images/logo-permata.png',
+                payment_type: 'permata',
             },
         ],
     },
     {
-        id: 'p2',
+        id: 'emy',
         title: 'Uang Elektronik',
         data: [
             {
-                id: 'p2a',
+                id: 'emy_gopay',
                 name: 'GoPay',
                 logo: '/images/logo-gopay.png',
+                payment_type: 'gopay',
             },
             {
-                id: 'p2b',
-                name: 'DANA',
-                logo: '/images/logo-dana.png',
-            },
-            {
-                id: 'p2c',
-                name: 'OVO',
-                logo: '/images/logo-ovo.png',
-            },
-            {
-                id: 'p2d',
-                name: 'ShopeePay',
-                logo: '/images/logo-shopeepay.png',
-            },
-            {
-                id: 'p2e',
-                name: 'Scan QRIS',
+                id: 'emy_qris',
+                name: 'QRIS',
                 logo: '/images/logo-qris.png',
+                info: 'Scan menggunakan BCA mobile, DANA, OVO, ShopeePay, dll.',
+                payment_type: 'qris',
             },
         ],
     },
     {
-        id: 'p3',
+        id: 'cstore',
         title: 'Tunai di Gerai Ritel',
         data: [
             {
-                id: 'p3a',
+                id: 'cstore_alfamart',
                 name: 'Alfamart',
                 logo: '/images/logo-alfamart.png',
-            },
-            {
-                id: 'p3b',
-                name: 'Indomaret',
-                logo: '/images/logo-indomaret.png',
+                payment_type: 'cstore',
             },
         ],
     },
