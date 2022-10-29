@@ -5,6 +5,7 @@ import CheckoutContext from '../../../context/checkoutContext';
 import Toggle from '../../UI/form/Toggle';
 import Card from '../Card';
 import CreateAccount from './CreateAccount';
+import ExistAccount from './ExistAccount';
 
 export default function BuyerData({ productData }) {
     const checkoutContext = useContext(CheckoutContext);
@@ -25,7 +26,7 @@ export default function BuyerData({ productData }) {
                         checkoutContext.isCreateAccount ? (
                             <CreateAccount productData={productData} />
                         ) : (
-                            null
+                            <ExistAccount />
                         )
                     }
                 </div>
